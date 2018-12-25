@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+
+</head>
+<body>
+
+<div layout:fragment="content" class="row row-offcanvas row-offcanvas-right">
+
+    <div class="col-xs-12 col-sm-9">
+        <div class="jumbotron">
+            <h1>Hello, 杭宸!</h1>
+            <p>信息发布平台，免费为广大业主服务！</p>
+        </div>
+
+    </div>
+    <div th:replace="~{layouts/right :: div}"></div>
+</div>
+
+</body>
+</html>
