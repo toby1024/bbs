@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/login.css}" rel="stylesheet" media="screen" />
 </head>
 <body>
-
-<div layout:fragment="content" class="row row-offcanvas row-offcanvas-right">
-
-    <div class="col-xs-12 col-sm-9">
-        <div class="jumbotron">
-            <h1>Hello, 杭宸!</h1>
-            <p>信息发布平台，免费为广大业主服务！</p>
+<div class="container">
+    <form class="form-signin" action="/login" method="post">
+        <div class="text-center mb-4">
+            <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72"
+                 height="72">
+            <h1 class="h3 mb-3 font-weight-normal">杭宸BBS</h1>
+            <p>请遵守国家法律法规，严禁发布违法信息，违者将被追究法律责任！</p>
+        </div>
+        <div class="alert alert-danger" role="alert" th:if="${message != null}">
+            <p th:text="${message}" />
+        </div>
+        <div class="form-label-group">
+            <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required autofocus>
+            <label for="username">用户名</label>
         </div>
 
-    </div>
-    <div th:replace="~{layouts/right :: div}"></div>
-</div>
+        <div class="form-label-group">
+            <input type="password" id="password" name="password" class="form-control" placeholder="密 码" required>
+            <label for="password">密 码</label>
+        </div>
 
+        <button class="btn btn-primary btn-block" type="submit">登录</button>
+        <a href="/register" class="btn btn-outline-secondary btn-block">注册</a>
+    </form>
+</div>
 </body>
 </html>

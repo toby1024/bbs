@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <link th:href="@{/css/main.css}" rel="stylesheet" media="screen"/>
+    <script type="text/javascript" th:src="@{/js/holder.min.js}"></script>
+</head>
+<body>
+
+
+<div layout:fragment="content">
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">最新消息</h6>
+
+        <div class="media text-muted pt-3" th:each="message: ${page.content}">
+            <img data-src="holder.js/32x32?theme=thumb&random=yes&size=1&text=I" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark" th:text="${message.title}">title</strong>
+                <span th:text="${message.info}"/>
+            </p>
+        </div>
+
+        <small class="d-block text-right mt-3">
+            <a th:href="@{'/bbs?page='+${page.number-1}}" th:if="${page.hasPrevious()}">上一页</a>
+            <a th:href="@{'/bbs?page='+${page.number+1}}" th:if="${page.hasNext()}">下一页</a>
+        </small>
+    </div>
+</div>
+
+</body>
+</html>

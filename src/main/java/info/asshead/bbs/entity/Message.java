@@ -13,11 +13,13 @@ import java.util.Date;
 public class Message {
 
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private int userId;
 
   private String title;
   private String info;
+  private int status;
   private Date createdAt;
+  private Date updatedAt;
 }

@@ -5,7 +5,7 @@ spring:
     name: bbs
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2b8
     username: root
     password: 123456aB!
     type: com.alibaba.druid.pool.DruidDataSource
@@ -19,6 +19,7 @@ spring:
       show-sql: false
     profiles:
       active: dev
+
 logging:
   level:
     info.asshead: debug

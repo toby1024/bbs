@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>统一异常处理</title>
+</head>
+<body>
+<h1>出错啦，BUG？不存在的，一定是你姿势不对！</h1>
+<div style="display: none">
+    <div th:text="${url}"></div>
+    <div th:text="${exception.message}"></div>
+
+</div>
+</body>
+</html>

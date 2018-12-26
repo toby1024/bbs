@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <form action="/bbs/create" method="post">
+        <div class="text-center mb-4">
+            <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72"
+                 height="72">
+            <h1 class="h3 mb-3 font-weight-normal">杭宸BBS</h1>
+            <p>请遵守国家法律法规，严禁发布违法信息，违者将被追究法律责任！</p>
+        </div>
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="title" name="title" placeholder="标题" required/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">内容</label>
+            <div class="col-sm-10">
+                <textarea rows="5" class="form-control" id="info" name="info" placeholder="内容" require></textarea>
+            </div>
+        </div>
+        <div class="form-group row" style="text-align: right">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary mb-2">发布</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

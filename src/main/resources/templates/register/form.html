@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/login.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" action="/register" method="post">
+        <div class="text-center mb-4">
+            <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72"
+                 height="72">
+            <h1 class="h3 mb-3 font-weight-normal">杭宸BBS</h1>
+            <p>请遵守国家法律法规，严禁发布违法信息，违者将被追究法律责任！</p>
+        </div>
+        <div class="alert alert-danger" role="alert" th:if="${message != null}">
+            <p th:text="${message}"/>
+        </div>
+        <div class="form-label-group">
+            <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required autofocus>
+            <label for="username">用户名</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="password" name="password" class="form-control" placeholder="密 码" required>
+            <label for="password">密 码</label>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <select class="form-control" id="build" name="build">
+                    <option>选择幢</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                </select>
+            </div>
+            <div class="col" style="margin-bottom: 1rem">
+                <select class="form-control" id="unit" name="unit">
+                    <option>选择单元</option>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="number" id="room" name="room" class="form-control" placeholder="房号">
+            </div>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+    </form>
+</div>
+</body>
+</html>

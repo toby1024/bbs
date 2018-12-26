@@ -35,6 +35,7 @@ public class RoomRepositoryTest {
 
     assertTrue(room.get().getRoomString().equals("1-1-101"));
   }
+
   @Autowired
   private RoomRepository roomRepository;
 }
