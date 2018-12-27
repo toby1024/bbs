@@ -1,1 +1,1 @@
- exec java -jar /app/app.jar --spring.profiles.active=prod
+ exec java -jar /app/app.jar --spring.profiles.active=prod --spring.config.location=/app/application.yml
