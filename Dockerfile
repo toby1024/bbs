@@ -47,12 +47,17 @@ RUN echo "export JAVA_HOME=${JAVA_HOME}" >> ${HOME}/.bashrc && \
     echo "export LANGUAGE=zh_CN.UTF-8" >> ${HOME}/.bashrc && \
     echo "export LC_ALL=zh_CN.UTF-8" >> ${HOME}/.bashrc
 
+ENV RUN_ENV prod
+
+COPY pom.xml /tmp/build/
+COPY src /tmp/build/src
 
 RUN echo "root:Q!W@E#R$" | chpasswd \
+    && mkdir /tmp/build \
     && cd /tmp/build \
     && mkdir /app \
     && mvn clean package -q -P${RUN_ENV} -DskipTests=true \
     && mv target/*.jar /app/app.jar \
     && rm -rf /tmp/build
 
-CMD ["java", "-jar", "/app/eureka.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
