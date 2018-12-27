@@ -3,6 +3,17 @@ server:
 spring:
   application:
     name: bbs
+  profiles:
+    active: dev
+
+logging:
+  level:
+    info.asshead: debug
+  file: logs/bbs.log
+
+---
+spring:
+  profiles: dev
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2b8
@@ -17,20 +28,12 @@ spring:
     maxWait: 6000
     jpa:
       show-sql: false
-    profiles:
-      active: dev
-
-logging:
-  level:
-    info.asshead: debug
-  file: logs/bbs.log
-
----
-spring:
-  profiles: dev
 
 ---
 spring:
   profiles: test
   jpa:
     show-sql: true
+  datasource:
+    schema: classpath:init_table.sql
+    driverClassName: org.h2.Driver
