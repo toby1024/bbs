@@ -47,6 +47,18 @@ RUN echo "export JAVA_HOME=${JAVA_HOME}" >> ${HOME}/.bashrc && \
     echo "export LANGUAGE=zh_CN.UTF-8" >> ${HOME}/.bashrc && \
     echo "export LC_ALL=zh_CN.UTF-8" >> ${HOME}/.bashrc
 
+ENV RUN_ENV prod
+
+COPY pom.xml /tmp/build/
+COPY src /tmp/build/src
+
+RUN echo "root:Q!W@E#R$" | chpasswd \
+    && cd /tmp/build \
+    && mkdir /app \
+    && mvn clean package -q -P${RUN_ENV} -DskipTests=true \
+    && mv target/*.jar /app/app.jar \
+    && rm -rf /tmp/build
+
 ENV APP_BASE_HOME="/app" 
 ENV APP_HOME="${APP_BASE_HOME}"
 
