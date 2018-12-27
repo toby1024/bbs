@@ -62,6 +62,6 @@ RUN echo "root:Q!W@E#R$" | chpasswd \
     && mv target/*.jar /app/app.jar \
     && rm -rf /tmp/build
 
-COPY *.sh $APP_HOME/
+COPY *.sh $APP_BASE_HOME/
 
 ENTRYPOINT [ "/bin/bash", "entrypoint.sh" ]
