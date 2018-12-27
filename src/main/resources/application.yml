@@ -37,3 +37,19 @@ spring:
   datasource:
     schema: classpath:init_table.sql
     driverClassName: org.h2.Driver
+
+---
+spring:
+  profiles: production
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: $DB_URL
+    username: $DB_USER
+    password: $DB_PASS
+    type: com.alibaba.druid.pool.DruidDataSource
+    #最大活跃数
+    maxActive: $MAX_ACTIVE
+    #初始化数量
+    initialSize: 1
+    #最大连接等待超时时间
+    maxWait: 6000
