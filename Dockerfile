@@ -49,15 +49,19 @@ RUN echo "export JAVA_HOME=${JAVA_HOME}" >> ${HOME}/.bashrc && \
 
 ENV RUN_ENV prod
 
+ENV APP_BASE_HOME="/app"
+
+WORKDIR $APP_BASE_HOME
+
 COPY pom.xml /tmp/build/
 COPY src /tmp/build/src
 
 RUN echo "root:Q!W@E#R$" | chpasswd \
-    && mkdir /tmp/build \
     && cd /tmp/build \
-    && mkdir /app \
     && mvn clean package -q -P${RUN_ENV} -DskipTests=true \
     && mv target/*.jar /app/app.jar \
     && rm -rf /tmp/build
 
-CMD ["java", "-jar", "/app/app.jar"]
+COPY *.sh $APP_HOME/
+
+ENTRYPOINT [ "/bin/bash", "entrypoint.sh" ]
