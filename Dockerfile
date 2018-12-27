@@ -68,4 +68,3 @@ COPY *.sh $APP_HOME/
 COPY build/libs/*.jar app/app.jar
 
 ENTRYPOINT [ "/bin/bash", "entrypoint.sh" ]
-CMD [ "pre_prod" ]
