@@ -65,6 +65,5 @@ ENV APP_HOME="${APP_BASE_HOME}"
 WORKDIR $APP_HOME
 
 COPY *.sh $APP_HOME/
-COPY build/libs/*.jar app/app.jar
 
 ENTRYPOINT [ "/bin/bash", "entrypoint.sh" ]
