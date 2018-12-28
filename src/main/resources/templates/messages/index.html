@@ -16,7 +16,7 @@
         <div class="media text-muted pt-3" th:each="message: ${page.content}">
             <img data-src="holder.js/32x32?theme=thumb&random=yes&size=1&text=I" alt="" class="mr-2 rounded">
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <strong class="d-block text-gray-dark" th:text="${message.title}">title</strong>
+                <strong class="d-block text-gray-dark" th:text="${message.user.username}+':'+${message.title}">title</strong>
                 <span th:text="${message.info}"/>
             </p>
         </div>
