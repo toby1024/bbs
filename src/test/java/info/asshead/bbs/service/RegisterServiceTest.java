@@ -16,17 +16,10 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @Transactional
 public class RegisterServiceTest {
-  Room room = new Room();
-  @Before
-  public void setUp() throws Exception {
-    room.setBuild(1);
-    room.setUnit(1);
-    room.setRoom(101);
-    roomRepository.save(room);
-  }
 
   @Test
   public void registerSuccess() throws Exception {
+    Room room = roomRepository.findByBuildAndUnitAndRoom(1,1,101).get();
     User user = registerService.register("test", "test", "1-1-101");
 
     assertTrue(user.getRoomId() == room.getId());
@@ -44,7 +37,7 @@ public class RegisterServiceTest {
   @Test
   public void registerRoomNotExists() throws Exception {
 
-    User user = registerService.register("testA", "testA", "3-1-101");
+    User user = registerService.register("testA", "testA", "30-1-101");
     assertNull(user);
   }
 

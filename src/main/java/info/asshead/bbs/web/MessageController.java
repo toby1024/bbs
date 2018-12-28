@@ -35,7 +35,7 @@ public class MessageController {
 
     User user = (User) request.getSession().getAttribute(CommonConstant.SESSION_USER);
 
-    Message message = messageService.create(title, info, user.getId());
+    Message message = messageService.create(title, info, user);
 
     return "redirect:/bbs";
   }

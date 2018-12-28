@@ -23,4 +23,9 @@ public class User {
 
   private Date createdAt;
   private Date updatedAt;
+
+  public User(){}
+  public User(int userId) {
+    this.id = userId;
+  }
 }

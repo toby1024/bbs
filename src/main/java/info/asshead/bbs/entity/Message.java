@@ -2,10 +2,7 @@ package info.asshead.bbs.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,11 +12,14 @@ public class Message {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private int userId;
 
   private String title;
   private String info;
   private int status;
   private Date createdAt;
   private Date updatedAt;
+
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "user_id")
+  private User user;
 }

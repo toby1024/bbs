@@ -1,8 +1,10 @@
 package info.asshead.bbs.service;
 
 import info.asshead.bbs.entity.Message;
+import info.asshead.bbs.entity.User;
 import info.asshead.bbs.repository.MessageRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.OpenOption;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 
@@ -23,9 +25,9 @@ import java.util.Optional;
 public class MessageService {
   private static int pageSize = 15;
 
-  public Message create(String title, String info, int userId) {
+  public Message create(String title, String info, User user) {
     Message message = new Message();
-    message.setUserId(userId);
+    message.setUser(user);
     message.setTitle(title);
     message.setInfo(info);
     message.setStatus(1);
@@ -48,13 +50,20 @@ public class MessageService {
     return messageRepository.findByStatus(1, pageable);
   }
 
-  public void delete(int id){
+  public void delete(int id) {
     Optional<Message> optional = messageRepository.findById(id);
-    if(optional.isPresent()){
+    if (optional.isPresent()) {
       Message message = optional.get();
       message.setStatus(0);
       messageRepository.save(message);
     }
+  }
+
+  public void cleanMessage(int overDay) {
+    Calendar now = Calendar.getInstance();
+    now.add(Calendar.DATE, -overDay);
+    Date date = now.getTime();
+    messageRepository.cleanByDate(date);
   }
 
   @Autowired

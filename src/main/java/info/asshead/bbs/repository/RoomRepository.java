@@ -10,5 +10,5 @@ import java.util.Optional;
  */
 public interface RoomRepository extends CrudRepository<Room, Integer> {
 
-  Optional<Room> findByBuildAndAndUnitAndRoom(int build, int unit, int room);
+  Optional<Room> findByBuildAndUnitAndRoom(int build, int unit, int room);
 }

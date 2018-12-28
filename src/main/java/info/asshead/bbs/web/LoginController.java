@@ -20,7 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
   @GetMapping
-  public String index(){
+  public String index(HttpServletRequest request){
+    if(request.getSession().getAttribute(CommonConstant.SESSION_USER) != null){
+      return "redirect:/bbs";
+    }
     return "index";
   }
 

@@ -29,7 +29,7 @@ public class RegisterService {
     }
     Room room = SplitRoomStringUtil.split(roomString);
 
-    Optional<Room> roomOptional = roomRepository.findByBuildAndAndUnitAndRoom(room.getBuild(), room.getUnit(), room.getRoom());
+    Optional<Room> roomOptional = roomRepository.findByBuildAndUnitAndRoom(room.getBuild(), room.getUnit(), room.getRoom());
     if (roomOptional.isPresent()) {
       Optional<User> userOptional = userRepository.findByRoomId(roomOptional.get().getId());
       if (!userOptional.isPresent()) {
@@ -57,7 +57,7 @@ public class RegisterService {
 
   public boolean checkRoomExists(String roomString) {
     Room room = SplitRoomStringUtil.split(roomString);
-    return roomRepository.findByBuildAndAndUnitAndRoom(room.getBuild(), room.getUnit(), room.getRoom()).isPresent();
+    return roomRepository.findByBuildAndUnitAndRoom(room.getBuild(), room.getUnit(), room.getRoom()).isPresent();
   }
 
   @Autowired
